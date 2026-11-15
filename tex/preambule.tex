@@ -1,0 +1,119 @@
+% !TEX root = ../main.tex
+% =====================================================================
+%  PREAMBULE – všechny balíčky, písmo a globální nastavení sazby.
+%  Tento soubor se načítá z main.tex; běžně do něj nemusíte zasahovat.
+% =====================================================================
+\documentclass[12pt,a4paper]{article}
+
+% ---------- geometrie stránky ----------
+\usepackage[a4paper,
+            left=2.5cm, right=2.4cm,
+            top=2.0cm, bottom=2.5cm,
+            footskip=16pt]{geometry}
+
+% ---------- písmo a jazyk ----------
+\usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\IfFontExistsTF{Times New Roman}
+  {\setmainfont{Times New Roman}}
+  {\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{Cambria Math}
+  {\setmathfont{Cambria Math}}
+  {\IfFontExistsTF{TeX Gyre Termes Math}
+    {\setmathfont{TeX Gyre Termes Math}}
+    {\setmathfont{Latin Modern Math}}}
+\usepackage{polyglossia}
+\setdefaultlanguage{czech}
+
+% ---------- základní sazba ----------
+\linespread{0.95}
+\setlength{\parindent}{0.6cm}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\tolerance=1200
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\setlength{\abovedisplayskip}{8pt}
+\setlength{\belowdisplayskip}{8pt}
+\setlength{\abovedisplayshortskip}{4pt}
+\setlength{\belowdisplayshortskip}{4pt}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{{obrazky/}{./}}
+\usepackage{float}
+\usepackage{needspace}
+\usepackage[font=small,labelfont=bf,justification=centering,skip=6pt]{caption}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+
+% ---------- nadpisy ----------
+\titleformat{\section}[hang]
+  {\normalfont\fontsize{14}{16.8}\selectfont\bfseries}
+  {\makebox[0.63cm][l]{\thesection.}}{0pt}{}
+\titlespacing*{\section}{0pt}{14pt}{2pt}
+\titleformat{\subsection}[hang]
+  {\normalfont\fontsize{13}{15.6}\selectfont\bfseries}
+  {}{0pt}{}
+\titlespacing*{\subsection}{0pt}{12pt}{2pt}
+\setcounter{secnumdepth}{1}
+
+% ---------- seznamy ----------
+\setlist[itemize]{leftmargin=1.27cm, labelindent=0.63cm,
+  labelwidth=0.63cm, labelsep=0pt, align=left,
+  topsep=2pt, itemsep=2pt, parsep=0pt, partopsep=0pt}
+\setlist[enumerate]{leftmargin=1.27cm, labelindent=0.63cm,
+  labelwidth=0.63cm, labelsep=0pt, align=left,
+  topsep=2pt, itemsep=2pt, parsep=0pt, partopsep=0pt}
+
+% ---------- zápatí ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{- \thepage\ -}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{- \thepage\ -}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+% ---------- české názvy ----------
+\captionsetup[figure]{name=Obr.}
+\captionsetup[table]{name=Tab.}
+\renewcommand{\figurename}{Obr.}
+\renewcommand{\tablename}{Tab.}
+\renewcommand{\refname}{Použitá literatura}
+\renewcommand{\contentsname}{Obsah}
+\renewcommand{\listfigurename}{Seznam obrázků}
+\renewcommand{\listtablename}{Seznam tabulek}
+\setlength{\belowcaptionskip}{2pt}
+
+% Některé názvy nastavuje polyglossia až na začátku dokumentu.
+\AtBeginDocument{%
+  \renewcommand{\refname}{Použitá literatura}%
+  \renewcommand{\lstlistingname}{Výpis}%
+}
+
+% ---------- výpisy kódu ----------
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  rulecolor=\color{gray!50},
+  backgroundcolor=\color{gray!5},
+  keywordstyle=\bfseries,
+  commentstyle=\itshape,
+  stringstyle=\ttfamily,
+  showstringspaces=false,
+  tabsize=2,
+  columns=fullflexible,
+  keepspaces=true
+}

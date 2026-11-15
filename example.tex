@@ -1,0 +1,194 @@
+% !TEX program = xelatex
+% !TEX root = example.tex
+% =====================================================================
+%  EXAMPLE.TEX – ukázky syntaxe pro šablonu
+%
+%  Tento soubor je samostatný dokument. main.tex zůstává čistý a
+%  připravený k psaní; sem se podívejte, když si potřebujete zkopírovat
+%  obrázek, tabulku, rovnici, seznam, výpis kódu, citaci nebo odkaz.
+%
+%  Kompilace: Ctrl+Alt+B (LaTeX Workshop), task
+%  "LaTeX: Build example (XeLaTeX 2x)" nebo přímo:
+%  xelatex example.tex (dvakrát).
+% =====================================================================
+\input{tex/preambule}
+\input{tex/makra}
+
+\begin{document}
+
+\section*{Ukázky syntaxe}
+
+\vstup{Tento soubor je samostatný dokument. Slouží jen jako referenční
+přehled syntaxe – nic z~tohoto obsahu se nepřenáší do main.tex.
+Příkazy si odsud zkopírujte do svého protokolu.}
+
+\section{Nadpisy a text}
+
+\subsection{Úrovně nadpisů}
+
+Toto je běžný odstavec. Můžete v~něm použít \textbf{tučné písmo},
+\textit{kurzívu} nebo \texttt{monospace}. V~českém textu se hodí
+pevná mezera, například \verb|v~textu| nebo \verb|15.~11.~2026|.
+
+\subsubsection{Jemnější nadpis}
+
+Subsubsection je menší než subsection. V~šabloně se nečísluje, ale
+může se hodit pro členění delší kapitoly.
+
+\paragraph{Nadpis odstavce} Paragraph je ještě menší nadpis, který
+zůstává na začátku odstavce.
+
+Mezi speciální znaky patří \&, \%, \_, \#, \$ a~také české uvozovky
+„takto“. Zpětné lomítko se v~textu píše jako \texttt{\textbackslash}.
+
+\section{Obrázky}
+
+Obrázek se vkládá příkazem \texttt{\textbackslash obrazek}. První
+nepovinný argument je šířka, další tři jsou název souboru, popisek
+a~štítek pro odkazy. Soubory patří do složky \texttt{obrazky/}.
+
+% UKÁZKA – obrázek s vlastní šířkou
+\obrazek[0.6\textwidth]{obrazek-1.png}{Ukázkový popisek obrázku.}{obr:ukazka}
+
+Na obrázek se odkazujte jako na obr.~\ref{obr:ukazka}. Číslo i~popisek
+se vytvářejí automaticky.
+
+% UKÁZKA – druhý obrázek s výchozí šířkou 0.85\textwidth
+% \obrazek{obrazek-2.png}{Popisek druhého obrázku.}{obr:druhy}
+
+\section{Tabulky a rovnice}
+
+\subsection{Tabulka}
+
+Tabulku pište do prostředí \texttt{table} s~prostředím
+\texttt{tabular}. Popisek patří nad tabulku.
+
+% UKÁZKA – tabulka
+\begin{table}[H]
+  \centering
+  \caption{Ukázková tabulka s~naměřenými hodnotami.}
+  \label{tab:ukazka}
+  \begin{tabular}{|l|c|r|}
+    \hline
+    \textbf{Parametr} & \textbf{Hodnota} & \textbf{Jednotka} \\ \hline
+    Napětí & 5,00 & V \\ \hline
+    Proud & 0,25 & A \\ \hline
+  \end{tabular}
+\end{table}
+
+Odkaz na tabulku: tab.~\ref{tab:ukazka}.
+
+\subsection{Rovnice}
+
+Jedna číslovaná rovnice:
+
+% UKÁZKA – rovnice
+\begin{equation}
+  y = a x + b
+  \label{eq:ukazka}
+\end{equation}
+
+Odkaz na rovnici: \eqref{eq:ukazka}.
+
+Více zarovnaných rovnic:
+
+% UKÁZKA – align
+\begin{align}
+  y &= a x + b \label{eq:primka}\\
+  z &= y^2     \label{eq:kvadrat}
+\end{align}
+
+Rovnice \eqref{eq:primka} a~\eqref{eq:kvadrat} jdou odkazovat zvlášť.
+
+\section{Seznamy}
+
+Odrážky:
+
+% UKÁZKA – itemize
+\begin{itemize}
+  \item První odrážka.
+  \item Druhá odrážka.
+  \item Třetí odrážka.
+\end{itemize}
+
+Číslovaný seznam:
+
+% UKÁZKA – enumerate
+\begin{enumerate}
+  \item První krok.
+  \item Druhý krok.
+  \item Třetí krok.
+\end{enumerate}
+
+Seznamy lze vnořovat.
+
+\section{Kód}
+
+Delší ukázku kódu vložte do prostředí \texttt{lstlisting}. Jazyk se
+volí parametrem \texttt{language}, například \texttt{Python},
+\texttt{C}, \texttt{C++}, \texttt{Java} nebo \texttt{SQL}.
+
+% UKÁZKA – výpis kódu
+\begin{lstlisting}[language=Python,
+                   numbers=left,
+                   caption={Ukázkový výpis kódu.},
+                   label={lst:ukazka}]
+def soucet(a, b):
+    return a + b
+
+vysledek = soucet(2, 3)
+print(vysledek)
+\end{lstlisting}
+
+Odkaz na výpis: \ref{lst:ukazka}. Krátký název souboru pište přímo
+jako \texttt{main.py}.
+
+\section{Citace, poznámky a odkazy}
+
+Literaturu citujte pomocí \texttt{\textbackslash cite\{...\}} a~seznamu
+\texttt{thebibliography} na konci dokumentu.
+
+% UKÁZKA – citace, poznámka pod čarou, URL a odkaz
+Ukázková citace~\cite{ref:ukazka}. Tady je poznámka pod
+čarou.\footnote{Toto je ukázková poznámka pod čarou.}
+Webová adresa: \url{https://www.zcu.cz}. Odkaz s~vlastním textem:
+\href{https://www.zcu.cz}{ZČU}.
+
+Na stránku s~obrázkem se dostanete přes \texttt{\textbackslash pageref}:
+str.~\pageref{obr:ukazka}.
+
+\section{Zlomy a volitelné části}
+
+Ruční zlom stránky:
+
+\begin{verbatim}
+\newpage
+\end{verbatim}
+
+Ochrana proti osamocenému nadpisu:
+
+\begin{verbatim}
+\needspace{8cm}
+\section{Název kapitoly}
+\end{verbatim}
+
+Volitelný obsah, seznamy a přílohy:
+
+\begin{verbatim}
+\tableofcontents
+\listoffigures
+\listoftables
+\appendix
+\section{Přílohy}
+\end{verbatim}
+
+% =====================================================================
+% POUŽITÁ LITERATURA
+% =====================================================================
+\renewcommand{\refname}{Použitá literatura}
+\begin{thebibliography}{9}
+  \bibitem{ref:ukazka}
+  Autor. \textit{Název publikace}. Město: Vydavatel, 2024.
+\end{thebibliography}
+
+\end{document}

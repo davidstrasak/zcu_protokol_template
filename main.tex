@@ -1,0 +1,94 @@
+% !TEX program = xelatex
+% !TEX root = main.tex
+% =====================================================================
+%  HLAVNÍ SOUBOR PROTOKOLU – ZDE PIŠTE SVŮJ TEXT
+%
+%  main.tex je připravený k psaní: obsahuje jen údaje o projektu,
+%  titulní stranu a prázdnou kostru kapitol. Ukázky syntaxe jsou
+%  v samostatném souboru example.tex – otevřete ho, když si potřebujete
+%  zkopírovat příkaz nebo prostředí.
+%
+%  Struktura:
+%    main.tex                 – tento soubor: údaje + váš text
+%    example.tex              – ukázky syntaxe (samostatný dokument)
+%    tex/preambule.tex        – balíčky, písmo, okraje, globální sazba
+%    tex/makra.tex            – \vstup, \obrazek a další pomocné příkazy
+%    tex/titulni-strana.tex   – titulní strana
+%    obrazky/                 – sem vkládejte obrázky
+%
+%  Kompilace:
+%    VS Code: Ctrl+S (auto build) nebo Ctrl+Shift+B
+%    TeXstudio: F5 (dvakrát kvůli odkazům)
+%    příkazová řádka: xelatex main.tex  (dvakrát)
+% =====================================================================
+\input{tex/preambule}
+\input{tex/makra}
+
+% =====================================================================
+%  ÚDAJE O PROJEKTU – UPRAVTE POUZE TADY
+% =====================================================================
+\newcommand{\nazevPredmetu}{\vstup{Název předmětu}}
+\newcommand{\zkratkaPredmetu}{\vstup{ZKRATKA}}
+\newcommand{\katedra}{\vstup{Katedra – doplňte název}}
+\newcommand{\nazevProjektu}{\vstup{Název semestrálního projektu}}
+\newcommand{\typPrace}{Semestrální projekt}
+\newcommand{\autor}{\vstup{Jméno Příjmení}}
+\newcommand{\osobniCislo}{\vstup{A00B0000P}}
+\newcommand{\datumOdevzdani}{\today} % pevné datum: 15.~11.~2026
+\newcommand{\nazevArchivu}{\vstup{prijmeni\_projekt.zip}} % podtržítko pište jako \_
+
+\begin{document}
+
+% Titulní strana se bere z tex/titulni-strana.tex.
+\input{tex/titulni-strana}
+
+% Pro delší protokol lze zapnout obsah:
+% \tableofcontents
+% \newpage
+
+% =====================================================================
+%  ZDE ZAČNĚTE PSÁT
+%  Kapitoly níže jsou jen kostra – přejmenujte je, přesuňte nebo smažte.
+%  Syntaxe všech příkazů je v example.tex.
+% =====================================================================
+
+\section{Zadání}
+
+\vstup{Sem vložte text zadání. Můžete jej převzít z~předmětové karty,
+portálu Courseware nebo z~pokynů vyučujícího.}
+
+\section{Řešení}
+
+\vstup{Sem pište vlastní řešení. Delší text čleňte do odstavců
+a~podkapitol, aby se v~něm dalo snadno orientovat.}
+
+% \subsection{Postup řešení}
+% \vstup{...}
+
+\section{Zhodnocení}
+
+\vstup{Sem shrňte, co se povedlo a~co byste příště udělali jinak.}
+
+\section{Závěr}
+
+\vstup{Stručně zopakujte cíl, výsledek a~přínos práce.}
+
+% =====================================================================
+% POUŽITÁ LITERATURA – odkomentujte, pokud citujete
+% =====================================================================
+% \begin{thebibliography}{9}
+%   \bibitem{ref:zdroj}
+%   Autor. \textit{Název publikace}. Město: Vydavatel, 2024.
+% \end{thebibliography}
+
+% =====================================================================
+% VOLITELNÉ ČÁSTI – odkomentujte, pokud je potřebujete
+% =====================================================================
+% \appendix
+% \section{Přílohy}
+% \vstup{Sem vložte přílohy, například zdrojové soubory nebo data.}
+%
+% \listoffigures
+% \listoftables
+
+\end{document}

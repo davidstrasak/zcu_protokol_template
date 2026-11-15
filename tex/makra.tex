@@ -1,0 +1,43 @@
+% !TEX root = ../main.tex
+% =====================================================================
+%  VLASTNÍ MAKRA – zde jsou pomocné příkazy, které se používají v main.tex.
+%  Běžně je nemusíte měnit.
+% =====================================================================
+
+% ---------- šedý text = místo k doplnění ----------
+% Použití: \vstup{Text, který mám nahradit}
+\newcommand{\vstup}[1]{\textcolor{gray!85!black}{\itshape #1}}
+
+% ---------- obrázek s automatickým číslem a popiskem ----------
+% Použití:
+%   \obrazek[0.8\textwidth]{obrazek-1.png}{Popisek.}{obr:stitek}
+%
+% Argumenty:
+%   1. (nepovinný) šířka obrázku, výchozí 0.85\textwidth
+%   2. název souboru – hledá se v obrazky/ i v kořeni projektu
+%   3. popisek pod obrázkem
+%   4. štítek pro odkazy, např. \ref{obr:stitek}
+%
+% Dokud soubor neexistuje, vysází se šedý rámeček se jménem souboru.
+\newcommand{\obrazek}[4][0.85\textwidth]{%
+  \begin{figure}[H]
+    \centering
+    \setlength{\fboxsep}{0pt}%
+    \IfFileExists{obrazky/#2}{%
+      \includegraphics[width=#1,height=0.45\textheight,keepaspectratio]{obrazky/#2}%
+    }{%
+      \IfFileExists{#2}{%
+        \includegraphics[width=#1,height=0.45\textheight,keepaspectratio]{#2}%
+      }{%
+        \fcolorbox{gray!45}{gray!8}{%
+          \begin{minipage}[c][5cm][c]{\dimexpr#1-2\fboxrule\relax}
+            \centering\color{gray}\itshape
+            místo pro obrázek\\[4pt]
+            \texttt{\detokenize{#2}}
+          \end{minipage}}%
+      }%
+    }%
+    \caption{#3}%
+    \label{#4}%
+  \end{figure}%
+}
